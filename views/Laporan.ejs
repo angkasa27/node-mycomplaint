@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+</head>
+<body>
+<div style="width: 85%;">
+	<div style="text-align: center;">
+	<h3>LAPORAN TANGGAPAN</h5>
+	<center>
+	<table style="text-allign : center">
+		<tr>
+			
+			<th>NIK Pelapor</th>
+			<th>Nama Pelapor</th>
+			<th>Isi Pengaduan</th>
+			<th>Tanggal Pengaduan</th>
+			<th>Status</th>
+			<th>Tanggal Tanggapan</th>
+			<th>Isi Tanggapan</th>
+			<th>Admin</th>
+		</tr>
+		<% if (laporan.length > 0) { %>
+			<% laporan.forEach(x => {%>
+				<tr>
+					<td><%= x.nik %></td>
+					<td><%= x.nama %></td>
+					<td><%= x.isi_laporan %></td>
+					<td><%= x.tgl_pengaduan %></td>
+					<td><%= x.status %></td>
+					<td><%= x.tgl_tanggapan %></td>
+					<td><%= x.tanggapan %></td>
+					<td><%= x.nama_petugas %></td>
+				</tr>
+		<%	});%>
+		<% }%>
+	</table>	
+	</center>
+	</div>
+</div>
+</body>
+</html>
+
