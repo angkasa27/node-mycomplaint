@@ -89,6 +89,7 @@ module.exports.postDaftarUser = (req, res) => {
     username: req.body.username,
     password: md5(req.body.password),
     telp: req.body.phone,
+    createAt_masyarakat: req.body.createAt,
   };
   if (angka.test(dataDaftar.nik) == false) {
     return res.json({
@@ -270,7 +271,7 @@ module.exports.getDetailPengaduan = (req, res) => {
                 image: dataPengaduan.foto,
               },
               response: {
-                description: dataPengaduan.isi_laporan,
+                description: dataPengaduan.tanggapan,
                 createAt: dataPengaduan.tgl_pengaduan,
               },
               operatorName: dataPengaduan.nama_petugas,

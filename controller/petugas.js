@@ -448,7 +448,7 @@ module.exports.getAllUser = (req, res) => {
 
   skemaMasyarakat
     .findAndCountAll({
-      attributes: ['nik', 'nama', 'username', 'telp'],
+      attributes: ['nik', 'nama', 'username', 'telp', 'createAt_masyarakat'],
       limit: 10,
       offset: halaman - 1,
     })
@@ -587,6 +587,7 @@ module.exports.putEditPetugas = (req, res) => {
   var dataPetugas = {
     nama_petugas: req.body.name,
     Username: req.body.username,
+    telp: req.body.phone,
   };
   if (req.dataToken.level == 'admin') {
     skemaPetugas
@@ -641,6 +642,33 @@ module.exports.deletePetugas = (req, res) => {
           });
         }
       });
+  } else {
+    res.json({
+      success: false,
+      data: {},
+      message: 'Bukan Admin',
+      code: 404,
+    });
+  }
+};
+
+module.exports.postTambahAdmin = (req, res) => {
+  if (req.dataToken.level == 'admin') {
+    var data = {
+      nama_petugas: req.body.name,
+      Username: req.body.username,
+      Password: md5(req.body.password),
+      telp: req.body.phone,
+      level: 'petugas',
+      createAt_petugas: req.body.createAt,
+    };
+    skemaPetugas.create(data);
+    res.json({
+      success: true,
+      data: '',
+      message: 'Create Petugas success',
+      code: 200,
+    });
   } else {
     res.json({
       success: false,

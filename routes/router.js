@@ -20,6 +20,7 @@ module.exports  =   app     => {
     app.post('/users/login'                             , customer.postLoginUser)
     app.post('/users/register'                          , customer.postDaftarUser)
     app.post('/admin/pengaduan/:pengaduanId/response'   , cekSession.jalankan , petugas.postTambahTanggapan)
+    app.post('/admin/operator'                          , cekSession.jalankan , petugas.postTambahAdmin);
     app.post('/users/pengaduan'                         , cekSession.jalankan , customer.postPengaduan)
     
     app.put('/admin/pengaduan/:pengaduanId/status'      , cekSession.jalankan , petugas.putEditStatus)
