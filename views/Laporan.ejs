@@ -12,13 +12,14 @@ table, th, td {
 </style>
 </head>
 <body>
-<div style="width: 85%;">
+<div style="width: 100%;">
 	<div style="text-align: center;">
 	<h3>LAPORAN TANGGAPAN</h5>
 	<center>
 	<table style="text-allign : center">
 		<tr>
 			
+			<th>Subjek</th>
 			<th>NIK Pelapor</th>
 			<th>Nama Pelapor</th>
 			<th>Isi Pengaduan</th>
@@ -31,6 +32,7 @@ table, th, td {
 		<% if (laporan.length > 0) { %>
 			<% laporan.forEach(x => {%>
 				<tr>
+					<td><%= x.subjek %></td>
 					<td><%= x.nik %></td>
 					<td><%= x.nama %></td>
 					<td><%= x.isi_laporan %></td>

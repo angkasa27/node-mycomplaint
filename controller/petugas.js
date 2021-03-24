@@ -390,8 +390,8 @@ module.exports.getLaporan = (req, res) => {
       (err, dataPdf) => {
         //setting layout pdf
         let options = {
-          height: '11.25in',
-          width: '8.5in',
+          height: '8.5in',
+          width: '11.25in',
           header: { height: '20mm' },
           footer: { height: '20mm' },
         };
@@ -403,7 +403,7 @@ module.exports.getLaporan = (req, res) => {
             function (err, data) {
               //setelah generate pdf , akan menampilkan pdf tersebut pada endpoint ini
               const base64pdf = fs.readFileSync(
-                './public/5090c3c8bb81ab2d70d2470ed41aef02.pdf',
+                './public/03cd430ca4a29c5f77341bdb2fd20210.pdf',
                 { encoding: 'base64' }
               );
               res.json({ data: base64pdf });
