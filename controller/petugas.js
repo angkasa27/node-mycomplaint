@@ -402,21 +402,11 @@ module.exports.getLaporan = (req, res) => {
             './public/03cd430ca4a29c5f77341bdb2fd20210.pdf',
             function (err, data) {
               //setelah generate pdf , akan menampilkan pdf tersebut pada endpoint ini
-              fs.readFile(
-                path.join(
-                  __dirname,
-                  '../public',
-                  '03cd430ca4a29c5f77341bdb2fd20210.pdf'
-                ),
-                function (err, data) {
-                  res.contentType('application/pdf');
-                  // res.setHeader(
-                  //   'Content-disposition',
-                  //   'attachment; filename=' + 'Example.pdf'
-                  // );
-                  res.send(data);
-                }
+              const base64pdf = fs.readFileSync(
+                './public/5090c3c8bb81ab2d70d2470ed41aef02.pdf',
+                { encoding: 'base64' }
               );
+              res.json({ data: base64pdf });
             }
           );
       }
